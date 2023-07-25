@@ -3,3 +3,32 @@
   justify-content: space-between;
   padding: 0.5rem 1rem;
 }
+
+.about-blurb {
+  display: flex;
+  margin: 1rem 1.5rem;
+}
+
+.about-image {
+  flex-grow: 1;
+}
+
+.about-text {
+  flex-grow: 2;
+}
+
+.feed-container {
+  display: grid;
+  grid-template-columns: auto auto;
+  grid-gap: 0.5rem 1rem;
+  margin: 1rem 1.5rem;
+  height: 85vh;
+}
+
+.board-container {
+  display: grid;
+  grid-template-columns: auto auto auto;
+  grid-gap: 0.5rem 1rem;
+  margin: 1rem 1.5rem;
+  height: 85vh;
+}
