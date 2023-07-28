@@ -22,6 +22,8 @@ public class User {
     private String password;
     @Transient
     private String passConfirm;
+    @Transient
+    private String registrationStatus;
     @Column(updatable = false)
     private Date createdOn;
     private Date lastUpdated;
@@ -68,6 +70,12 @@ public class User {
 
     public void setPassConfirm(String passConfirm) {
         this.passConfirm = passConfirm;
+    }
+    public String getRegistrationStatus() {
+        return registrationStatus;
+    }
+    public void setRegistrationStatus(String status) {
+        this.registrationStatus = status;
     }
 
     public Date getCreatedOn() {
