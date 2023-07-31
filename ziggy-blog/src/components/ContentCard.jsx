@@ -6,7 +6,7 @@ import { CardActionArea } from '@mui/material';
 
 export default function ContentCard() {
   const expand = () => {
-    
+    console.log("expanded")
   }
   return (
     <Card>

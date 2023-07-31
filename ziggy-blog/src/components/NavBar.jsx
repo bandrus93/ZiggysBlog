@@ -1,10 +1,12 @@
 import * as React from 'react';
 import { Link as RoutePath } from 'react-router-dom';
-import { Link, Button, ToggleButton, ToggleButtonGroup } from '@mui/material';
-import MenuIcon from '@mui/icons-material/Menu';
+import { Link, ToggleButton, ToggleButtonGroup } from '@mui/material';
+import NavbarMenu from './NavbarMenu';
 
 export default function NavBar() {
   const [selection, setSelection] = React.useState('posts');
+  const [user, setUser] = React.useState(null);
+  const loggedInUser = Boolean(user);
 
   const handleSelection = (event, newSelection) => {
     setSelection(newSelection);
@@ -12,9 +14,7 @@ export default function NavBar() {
 
   return (
     <div className='navbar-container'>
-        <Button>
-            <MenuIcon />
-        </Button>
+        <NavbarMenu></NavbarMenu>
         <ToggleButtonGroup
             value={selection}
             exclusive
@@ -45,7 +45,7 @@ export default function NavBar() {
                 console.info("Redirect to sign-in page.");
             }}
         >
-        Sign In
+        {loggedInUser ? "Welcome " + user + "! | Sign Out" : "Sign In"}
         </Link>
     </div>
   );
