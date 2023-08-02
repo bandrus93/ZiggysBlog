@@ -1,13 +1,13 @@
 import * as React from 'react';
 import { Link as RoutePath } from 'react-router-dom';
-import { Link, ToggleButton, ToggleButtonGroup } from '@mui/material';
+import { ToggleButton, ToggleButtonGroup } from '@mui/material';
 import NavbarMenu from './NavbarMenu';
-import UserContext  from '../contexts/UserContext';
+import SignInForm from './SignInForm';
+import { useAppState } from '../contexts/AppStateContext';
 
 export default function NavBar() {
   const [selection, setSelection] = React.useState('posts');
-  const user = React.useContext(UserContext);
-  const loggedInUser = Boolean(user);
+  const { updateUser } = useAppState();
 
   const handleSelection = (event, newSelection) => {
     setSelection(newSelection);
@@ -38,7 +38,7 @@ export default function NavBar() {
             Products/Support
         </ToggleButton>
         </ToggleButtonGroup>
-        
+        <SignInForm updateUser={updateUser} />
     </div>
   );
 }

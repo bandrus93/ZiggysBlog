@@ -7,16 +7,14 @@ import Error from './pages/Error';
 import Feed from './pages/Feed';
 import Shop from './pages/Shop';
 import { useState } from 'react';
-import UserContext from './contexts/UserContext';
+import { AppStateProvider } from './contexts/AppStateContext';
 
 function App() {
-  const [user, setUser] = useState();
 
   return (
+    <AppStateProvider>
     <BrowserRouter>
-    <UserContext.Provider value={user}>
     <NavBar />
-    </UserContext.Provider>
       <Routes>
         <Route path='/feed' index element={<Feed />} />
         <Route path='/about' element={<About />} />
@@ -26,6 +24,7 @@ function App() {
         <Route path='*' element={<Error />} />
       </Routes>
     </BrowserRouter>
+    </AppStateProvider>
   );
 }
 
