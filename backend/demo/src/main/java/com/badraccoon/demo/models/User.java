@@ -24,8 +24,9 @@ public class User {
     private String passConfirm;
     @Transient
     private String registrationStatus;
-    @Column(updatable = false)
+    @Column(updatable = false, name = "created_on")
     private Date createdOn;
+    @Column(name = "last_updated")
     private Date lastUpdated;
     @OneToMany(mappedBy = "author", fetch = FetchType.LAZY)
     private List<Post> posts;
@@ -74,6 +75,23 @@ public class User {
     public String getRegistrationStatus() {
         return registrationStatus;
     }
+
+    public List<Post> getPosts() {
+        return posts;
+    }
+
+    public void setPosts(List<Post> posts) {
+        this.posts = posts;
+    }
+
+    public List<Comment> getComments() {
+        return comments;
+    }
+
+    public void setComments(List<Comment> comments) {
+        this.comments = comments;
+    }
+
     public void setRegistrationStatus(String status) {
         this.registrationStatus = status;
     }
