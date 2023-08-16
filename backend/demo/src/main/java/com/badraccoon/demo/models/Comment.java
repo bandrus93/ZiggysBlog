@@ -20,7 +20,7 @@ public class Comment {
     @OneToMany(mappedBy = "threadRoot", fetch = FetchType.LAZY)
     private List<Comment> replies;
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "comment_id")
+    @JoinColumn(name = "thread_id")
     private Comment threadRoot;
     @ManyToOne(fetch = FetchType.LAZY)
     private User commenter;
