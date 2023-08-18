@@ -9,12 +9,12 @@ export default function SignInForm({ updateUser }) {
     const [user, setUser] = React.useState();
     const [anchorEl, setAnchorEl] = React.useState(null);
     const [createAccount, setCreateAccount] = React.useState(false);
-    const [newUser, setNewUser] = React.useState({
+    const newUser = {
         username: '',
         email: '',
         password: '',
         passwordVerify: ''
-    });
+    };
 
     const open = Boolean(anchorEl);
 
@@ -35,10 +35,7 @@ export default function SignInForm({ updateUser }) {
 
     const handleInputChange = (event) => {
         const {id, value} = event.target;
-        setNewUser(prevUser => ({
-            ...prevUser,
-            [id]: value
-        }));
+        newUser[id] = value;
     }
 
     async function postNewUser(event) {
@@ -84,17 +81,15 @@ export default function SignInForm({ updateUser }) {
             <Dialog open={createAccount} onClose={closeDialog}>
                 <DialogTitle>Create Account</DialogTitle>
                 <DialogContent>
-                    <form onSubmit={postNewUser}>
                     <FormItemList>
-                        <FormItem><TextField id='username' label="Username" variant='filled' value={newUser.username} onChange={handleInputChange} /></FormItem>
-                        <FormItem><TextField id='email' label="Email" variant='filled' value={newUser.email} onChange={handleInputChange}/></FormItem>
-                        <FormItem><TextField id='pword' label="Password" variant='filled' value={newUser.password} onChange={handleInputChange}/></FormItem>
-                        <FormItem><TextField id='pword-verify' label="Re-enter Password" variant='filled' value={newUser.passwordVerify} onChange={handleInputChange} /></FormItem>
+                        <FormItem><TextField id='username' label="Username" variant='filled' onChange={handleInputChange} /></FormItem>
+                        <FormItem><TextField id='email' label="Email" variant='filled' onChange={handleInputChange}/></FormItem>
+                        <FormItem><TextField id='pword' label="Password" variant='filled' onChange={handleInputChange}/></FormItem>
+                        <FormItem><TextField id='pword-verify' label="Re-enter Password" variant='filled' onChange={handleInputChange} /></FormItem>
                     </FormItemList>
-                    </form>
                 </DialogContent>
                 <DialogActions>
-                    <Button type='submit' variant='contained'>Create Account</Button>
+                    <Button variant='contained' onClick={postNewUser}>Create Account</Button>
                     <Button variant='outlined' onClick={closeDialog}>Cancel</Button>
                 </DialogActions>
             </Dialog>
